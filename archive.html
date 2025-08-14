@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Archive — ELEANOR REYELT</title>
+  <meta name="description" content="Selected past works by Eleanor Reyelt." />
+  
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">ELEANOR REYELT</a>
+    <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="nav" aria-label="Primary">
+      <a href="index.html">Available Work</a>
+      <a href="archive.html">Archive</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="hero" style="padding-top:34px">
+      <div class="container"><h1>Archive</h1><p class="muted">Selected past works.</p></div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid cols-2">
+          <figure class="card">
+            <div class="media"><img src="assets/img/starburst.jpg" alt='"STARBURST"'></div>
+            <figcaption><span class="title">"STARBURST"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/crochet-exploration.jpg" alt="Crochet Exploration"></div>
+            <figcaption><span class="title">Crochet Exploration</span><span class="pill">SAMPLE WORK</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/in-the-tank.jpg" alt='"In the Tank"'></div>
+            <figcaption><span class="title">"In the Tank"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/love-grows.jpg" alt='"Love Grows"'></div>
+            <figcaption><span class="title">"Love Grows"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/wine-down.jpg" alt='"Wine Down"'></div>
+            <figcaption><span class="title">"Wine Down"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/growth-is-a-mindset.jpg" alt='"Growth is a Mindset"'></div>
+            <figcaption><span class="title">"Growth is a Mindset"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/bony.jpg" alt='"Bony"'></div>
+            <figcaption><span class="title">"Bony"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/raw.jpg" alt='"Raw"'></div>
+            <figcaption><span class="title">"Raw"</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+<footer class="site-footer">
+  <div class="container">
+    <div class="social" aria-label="Social links">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <small class="muted">© <span id="y"></span> Eleanor Reyelt</small>
+  </div>
+</footer>
+
+  
+<script>
+  // sticky header - mobile nav toggle + active link + year
+  const menuBtn = document.getElementById('menu');
+  const nav = document.getElementById('site-nav');
+  menuBtn?.addEventListener('click', ()=>{
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('#site-nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+  const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('#site-nav a').forEach(a=>{
+    const href = a.getAttribute('href')?.toLowerCase();
+    if ((path === '' && href === 'index.html') || path === href) a.classList.add('active');
+  });
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
