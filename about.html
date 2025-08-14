@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>About — ELEANOR REYELT</title>
+  <meta name="description" content="About Eleanor Reyelt — Boston-based artist working in painting and fibers." />
+  
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">ELEANOR REYELT</a>
+    <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="nav" aria-label="Primary">
+      <a href="index.html">Available Work</a>
+      <a href="archive.html">Archive</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="hero" style="padding-top:34px">
+      <div class="container"><h1>About</h1></div>
+    </section>
+
+    <section id="about" style="background:#fafafa">
+      <div class="container">
+        <div class="about">
+          <div class="photo">
+            <img src="assets/img/headshot.jpg" alt="Eleanor Reyelt headshot">
+          </div>
+          <div>
+            <p>Eleanor Reyelt (b. Boston, 2004) is a visual artist based in Boston, Massachusetts. She works primarily in painting and textiles to create bold, material-driven works that celebrate the loud, electric energy of girlhood. Drawing from early aesthetics like glitter, plastic, and pink, her practice reimagines these elements with confidence and intensity. Through saturated surfaces, layered textures, and playful materials, she explores excess, visibility, and the power of being too much. Eleanor is currently pursuing her BFA in Painting with a minor in Fibers at the Savannah College of Art and Design.</p>
+
+            <div class="resume">
+              <h3>Education</h3>
+              <p>Savannah College of Art and Design | 2023–2027<br>BFA in Painting, Fibers Minor</p>
+              <p>Brimmer and May School | 2015–2023<br>High School Diploma & Creative Arts Diploma</p>
+
+              <h3>Exhibitions • Awards</h3>
+              <ul>
+                <li>2025 | <em>Art Off the Wall</em>, Brookline Arts Center — <em>GLAMQUARIUM</em> & <em>The Orange Line</em></li>
+                <li>2025 | <em>Orange Line</em>, Piano Craft Gallery, Boston, MA — <em>The Orange Line</em></li>
+                <li>2025 | Fibers Open Studio, Savannah, GA — <em>JUNKANOO</em> series</li>
+                <li>2020 | Scholastic Art & Writing Awards — Silver Key (<em>Camouflage</em>)</li>
+              </ul>
+
+              <h3>Professional Experience</h3>
+              <ul>
+                <li>Studio Echelman — Studio Assistant (2024–present)</li>
+                <li>Freelance Visual Artist — Commissions & sales</li>
+              </ul>
+
+              <h3>Skills</h3>
+              <p>Studio Art | Fiber Arts | Digital Art | Painting | Social Media | Web</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+<footer class="site-footer">
+  <div class="container">
+    <div class="social" aria-label="Social links">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <small class="muted">© <span id="y"></span> Eleanor Reyelt</small>
+  </div>
+</footer>
+
+  
+<script>
+  // sticky header - mobile nav toggle + active link + year
+  const menuBtn = document.getElementById('menu');
+  const nav = document.getElementById('site-nav');
+  menuBtn?.addEventListener('click', ()=>{
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  document.querySelectorAll('#site-nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+  const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('#site-nav a').forEach(a=>{
+    const href = a.getAttribute('href')?.toLowerCase();
+    if ((path === '' && href === 'index.html') || path === href) a.classList.add('active');
+  });
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
