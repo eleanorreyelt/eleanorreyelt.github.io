@@ -1,0 +1,389 @@
+<!-- /index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eleanor Reyelt — Art & Textiles</title>
+  <meta name="description" content="Portfolio site template for an artist: paintings, textiles, archive, about, contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Minimal modern reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html:focus-within{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#111;background:#fff}
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit;text-decoration:none}
+    :root{
+      --container: clamp(16rem, 92vw, 1100px);
+      --gap: 1.25rem;
+      --accent:#ff3aa7; /* why: give a confident, high‑contrast accent */
+      --ink:#111; --ink-2:#444; --paper:#fff;
+      --muted:#f4f4f5; --muted-ink:#6b7280;
+      --radius: 1rem;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    .container{width:min(var(--container),100%);margin-inline:auto;padding-inline:1rem}
+    header.site{position:sticky;top:0;background:var(--paper);border-bottom:1px solid #eee;z-index:10}
+    .bar{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
+    .brand{font-weight:800;letter-spacing:.06em}
+    .nav{display:flex;gap:1rem;align-items:center}
+    .nav a{padding:.4rem .6rem;border-radius:.6rem}
+    .nav a[aria-current="page"], .nav a:hover{background:var(--muted)}
+    .menu-btn{display:none;border:1px solid #ddd;background:#fff;border-radius:.8rem;padding:.5rem .7rem}
+    @media (max-width: 800px){
+      .menu-btn{display:inline-flex}
+      .nav{position:fixed;inset:64px 0 auto 0;background:#fff;border-bottom:1px solid #eee;display:none;flex-direction:column;gap:0}
+      .nav.open{display:flex}
+      .nav a{padding:1rem 1.25rem;border-radius:0}
+    }
+
+    /* hero */
+    .hero{display:grid;place-items:center;min-height:65svh}
+    .hero-wrap{display:grid;gap:1rem;justify-items:center;text-align:center;padding:4rem 0}
+    .hero h1{font-size:clamp(1.6rem,4.5vw,3rem);line-height:1.1;margin:0}
+    .hero p{color:var(--ink-2);margin:0}
+    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.8rem 1rem;border-radius:.9rem;background:var(--ink);color:#fff;font-weight:600}
+    .cta:hover{opacity:.9}
+
+    /* sections */
+    section{padding:4.5rem 0}
+    section header{margin-bottom:1.2rem}
+    section h2{font-size:clamp(1.4rem,3.6vw,2.2rem);margin:0}
+    .muted{color:var(--muted-ink)}
+
+    /* gallery grid */
+    .grid{display:grid;gap:var(--gap)}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width: 900px){.grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width: 620px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+    .card{background:#fff;border:1px solid #eee;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .card > .media{aspect-ratio: 4 / 3; background:#eaeaea; display:grid; place-items:center}
+    .card figcaption{padding:0.9rem 1rem;display:flex;justify-content:space-between;gap:.75rem;align-items:flex-start}
+    .pill{display:inline-block;border:1px solid #eee;border-radius:999px;padding:.2rem .6rem;font-size:.8rem;color:#555}
+
+    /* about */
+    .about{display:grid;grid-template-columns:320px 1fr;gap:2rem;align-items:start}
+    .about .photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    @media (max-width: 900px){.about{grid-template-columns:1fr}}
+
+    /* contact */
+    form{display:grid;gap:.8rem}
+    .row{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
+    @media (max-width: 620px){.row{grid-template-columns:1fr}}
+    input,textarea,button{font:inherit}
+    input,textarea{border:1px solid #ddd;border-radius:.7rem;padding:.8rem 1rem}
+    textarea{min-height:160px}
+    button.btn{background:var(--accent);color:#fff;border:0;border-radius:.9rem;padding:.8rem 1rem;font-weight:700}
+    button.btn:hover{filter:saturate(110%)}
+
+    /* footer */
+    footer{padding:2.5rem 0;border-top:1px solid #eee;color:#666}
+    .social{display:flex;gap:.75rem}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+    /* simple lightbox */
+    dialog.preview{max-width:min(92vw,1000px);border:0;border-radius:1rem;box-shadow:var(--shadow);padding:0}
+    dialog::backdrop{background:rgba(0,0,0,.5)}
+    .preview img{width:100%;height:auto}
+    .preview .meta{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 1rem;border-top:1px solid #eee}
+  </style>
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header class="site">
+    <div class="container bar">
+      <a class="brand" href="#home">ELEANOR REYELT</a>
+      <button id="menu" class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="nav" aria-label="Primary">
+        <a href="#work" data-track>Available Work</a>
+        <a href="#paintings" data-track>Paintings</a>
+        <a href="#textiles" data-track>Textiles</a>
+        <a href="#archive" data-track>Archive</a>
+        <a href="#about" data-track>About</a>
+        <a href="#contact" data-track>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Home / Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-wrap">
+        <picture class="hero-media" aria-hidden="true" style="width:100%">
+          <img src="assets/img/hero-placeholder.jpg" alt="Placeholder artwork preview" style="border-radius:var(--radius);box-shadow:var(--shadow)" />
+        </picture>
+        <h1>HEN PARTY — 2025</h1>
+        <p class="muted">Bold, material‑driven works in paint and textiles.</p>
+        <p><a class="cta" href="#work">Browse available work →</a></p>
+      </div>
+    </section>
+
+    <!-- Available Work overview -->
+    <section id="work">
+      <div class="container">
+        <header>
+          <h2>Available Work</h2>
+          <p class="muted">Paintings and textiles currently available. Replace placeholders with your pieces.</p>
+        </header>
+        <div class="grid cols-2">
+          <a class="card" href="#paintings">
+            <figure>
+              <div class="media"><span>Paintings cover</span></div>
+              <figcaption><strong>Paintings</strong><span class="pill">View</span></figcaption>
+            </figure>
+          </a>
+          <a class="card" href="#textiles">
+            <figure>
+              <div class="media"><span>Textiles cover</span></div>
+              <figcaption><strong>Textiles</strong><span class="pill">View</span></figcaption>
+            </figure>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paintings -->
+    <section id="paintings">
+      <div class="container">
+        <header>
+          <h2>Paintings</h2>
+          <p class="muted">Swap images, titles, sizes, and prices to match your catalog.</p>
+        </header>
+        <div class="grid cols-3">
+          <!-- Card 1 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="Big Girl Wheels" data-meta="Acrylic on canvas, 24×30 in"><img src="assets/img/painting-1.jpg" alt="Artwork: Big Girl Wheels (placeholder)"/></a>
+            <figcaption><span>Big Girl Wheels</span><span class="pill">Available</span></figcaption>
+          </figure>
+          <!-- Card 2 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="Hen Party" data-meta="Acrylic on canvas, 36×48 in"><img src="assets/img/painting-2.jpg" alt="Artwork: Hen Party (placeholder)"/></a>
+            <figcaption><span>Hen Party</span><span class="pill">Available</span></figcaption>
+          </figure>
+          <!-- Card 3 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="Sweet Myrtle" data-meta="Mixed media, 18×24 in"><img src="assets/img/painting-3.jpg" alt="Artwork: Sweet Myrtle (placeholder)"/></a>
+            <figcaption><span>Sweet Myrtle</span><span class="pill">Available</span></figcaption>
+          </figure>
+          <!-- Card 4 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="Almost Natural" data-meta="Oil on panel, 20×20 in"><img src="assets/img/painting-4.jpg" alt="Artwork: Almost Natural (placeholder)"/></a>
+            <figcaption><span>Almost Natural</span><span class="pill">Available</span></figcaption>
+          </figure>
+          <!-- Card 5 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="My Blooming Self" data-meta="Acrylic on canvas, 30×40 in"><img src="assets/img/painting-5.jpg" alt="Artwork: My Blooming Self (placeholder)"/></a>
+            <figcaption><span>My Blooming Self</span><span class="pill">Available</span></figcaption>
+          </figure>
+          <!-- Card 6 -->
+          <figure class="card">
+            <a href="#" class="media open-preview" data-title="Zonked" data-meta="Oil on canvas, 24×24 in"><img src="assets/img/painting-6.jpg" alt="Artwork: Zonked (placeholder)"/></a>
+            <figcaption><span>Zonked</span><span class="pill">Available</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Textiles -->
+    <section id="textiles" style="background:var(--muted)">
+      <div class="container">
+        <header>
+          <h2>Textiles</h2>
+          <p class="muted">List items with edition/price notes. Prices below are placeholders.</p>
+        </header>
+        <div class="grid cols-3">
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-1.jpg" alt="Textile: Amoeba Sista (placeholder)"></div>
+            <figcaption><span>AMOEBA SISTA</span><span class="pill">$60</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-2.jpg" alt="Textile: Glamquarium (placeholder)"></div>
+            <figcaption><span>GLAMQUARIUM</span><span class="pill">$300</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-3.jpg" alt="Textile: Butterfly Garden (placeholder)"></div>
+            <figcaption><span>Butterfly Garden</span><span class="pill">$100</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-4.jpg" alt="Textile: Junkanoo 3/3 (placeholder)"></div>
+            <figcaption><span>JUNKANOO 3/3</span><span class="pill">$200</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-5.jpg" alt="Textile: Junkanoo 2/3 (placeholder)"></div>
+            <figcaption><span>JUNKANOO 2/3</span><span class="pill">$200</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/textile-6.jpg" alt="Textile: Junkanoo 1/3 (placeholder)"></div>
+            <figcaption><span>JUNKANOO 1/3</span><span class="pill">$200</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archive -->
+    <section id="archive">
+      <div class="container">
+        <header>
+          <h2>Archive</h2>
+          <p class="muted">Past works. Mark pieces as SOLD or with context notes.</p>
+        </header>
+        <div class="grid cols-3">
+          <figure class="card">
+            <div class="media"><img src="assets/img/archive-1.jpg" alt="Archive artwork placeholder"></div>
+            <figcaption><span>STARBURST</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/archive-2.jpg" alt="Archive artwork placeholder"></div>
+            <figcaption><span>In the Tank</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/archive-3.jpg" alt="Archive artwork placeholder"></div>
+            <figcaption><span>Wine Down</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="background:var(--muted)">
+      <div class="container">
+        <header>
+          <h2>About</h2>
+          <p class="muted">Replace with your bio; do not copy text from third‑party sites without permission.</p>
+        </header>
+        <div class="about">
+          <div class="photo"><img src="assets/img/headshot.jpg" alt="Artist headshot placeholder"></div>
+          <div>
+            <p><strong>Eleanor Reyelt</strong> is a Boston‑based visual artist working in painting and fibers. Her practice explores saturated color, layered textures, and playful materials. (Placeholder blurb.)</p>
+            <p class="muted">Education, exhibitions, awards, and skills can be listed here in simple paragraphs or lists.</p>
+            <ul>
+              <li><strong>Education:</strong> BFA candidate (placeholder)</li>
+              <li><strong>Exhibitions:</strong> 2025—Group/solo shows (placeholder)</li>
+              <li><strong>Skills:</strong> Studio art, fiber arts, digital art (placeholder)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <header>
+          <h2>Contact</h2>
+          <p class="muted">Use the form below or email directly. The form posts to a placeholder endpoint.</p>
+        </header>
+        <div class="grid cols-2">
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <div class="row">
+              <label>
+                <span class="sr-only">First Name</span>
+                <input name="first_name" placeholder="First Name" required>
+              </label>
+              <label>
+                <span class="sr-only">Last Name</span>
+                <input name="last_name" placeholder="Last Name" required>
+              </label>
+            </div>
+            <label>
+              <span class="sr-only">Email</span>
+              <input name="email" type="email" placeholder="Email" required>
+            </label>
+            <label>
+              <span class="sr-only">Subject</span>
+              <input name="subject" placeholder="Subject" required>
+            </label>
+            <label>
+              <span class="sr-only">Message</span>
+              <textarea name="message" placeholder="Leave a message..." required></textarea>
+            </label>
+            <button class="btn" type="submit">Submit</button>
+          </form>
+
+          <form action="https://formspree.io/f/your-id-newsletter" method="POST">
+            <h3>Join the mailing list</h3>
+            <label>
+              <span class="sr-only">Your email</span>
+              <input name="email" type="email" placeholder="Enter your email" required>
+            </label>
+            <label style="display:flex;align-items:center;gap:.5rem">
+              <input type="checkbox" required>
+              <span>Yes, subscribe me to your newsletter.</span>
+            </label>
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
+      <small>© <span id="y"></span> Eleanor Reyelt. All rights reserved.</small>
+      <div class="social" aria-label="Social links">
+        <a href="https://instagram.com/" aria-label="Instagram" target="_blank" rel="noreferrer noopener">🔗 Instagram</a>
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank" rel="noreferrer noopener">🔗 LinkedIn</a>
+        <a href="https://youtube.com/" aria-label="YouTube" target="_blank" rel="noreferrer noopener">🔗 YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- lightbox dialog -->
+  <dialog class="preview" id="preview">
+    <img alt="Artwork preview" src="" />
+    <div class="meta">
+      <strong id="pv-title"></strong>
+      <span id="pv-meta" class="muted"></span>
+      <button id="pv-close" class="btn" style="margin-left:auto;background:#111">Close</button>
+    </div>
+  </dialog>
+
+  <script>
+    // why: progressive enhancement for mobile nav & preview
+    const btn = document.getElementById('menu');
+    const nav = document.getElementById('site-nav');
+    btn?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click',()=>nav.classList.remove('open')));
+
+    // set current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // image preview (uses <dialog>)
+    const dlg = document.getElementById('preview');
+    const pvTitle = document.getElementById('pv-title');
+    const pvMeta = document.getElementById('pv-meta');
+    const pvImg  = dlg.querySelector('img');
+    document.querySelectorAll('.open-preview').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const img = link.querySelector('img');
+        pvImg.src = img.src; pvImg.alt = img.alt;
+        pvTitle.textContent = link.dataset.title || '';
+        pvMeta.textContent  = link.dataset.meta || '';
+        dlg.showModal();
+      });
+    });
+    document.getElementById('pv-close').addEventListener('click',()=>dlg.close());
+    dlg.addEventListener('click', e => { if(e.target === dlg) dlg.close(); });
+  </script>
+
+  <!--
+  README (quick):
+  1) Put this file at the repo root as index.html.
+  2) Add your images under /assets/img/ (create the folders). Update <img> src paths accordingly.
+  3) Replace placeholder text, prices, and links. If you own the original site/text, you can paste it here.
+  4) Forms: replace the Formspree endpoints with your IDs, or switch to Netlify Forms if deploying on Netlify.
+  5) GitHub Pages: Settings → Pages → deploy from main branch (root). Your site will be live at https://<user>.github.io/<repo>/
+  6) Favicon: place /assets/img/favicon.ico and add a <link rel="icon"> in <head>.
+  7) Custom domain: add a CNAME file with your domain to the repo root.
+  -->
+</body>
+</html>
