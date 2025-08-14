@@ -1,319 +1,301 @@
-<!-- /index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eleanor Reyelt — Art & Textiles</title>
-  <meta name="description" content="Portfolio site template for an artist: paintings, textiles, archive, about, contact." />
+  <title>ELEANOR REYELT</title>
+  <meta name="description" content="Eleanor Reyelt — paintings and textiles." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Minimal modern reset */
+    /* Base */
     *,*::before,*::after{box-sizing:border-box}
     html:focus-within{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#111;background:#fff}
     img{max-width:100%;display:block;height:auto}
     a{color:inherit;text-decoration:none}
     :root{
-      --container: clamp(16rem, 92vw, 1100px);
-      --gap: 1.25rem;
-      --accent:#ff3aa7; /* why: give a confident, high‑contrast accent */
-      --ink:#111; --ink-2:#444; --paper:#fff;
-      --muted:#f4f4f5; --muted-ink:#6b7280;
-      --radius: 1rem;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --container:clamp(18rem,92vw,1100px);
+      --gap:clamp(16px,2.2vw,28px);
+      --ink:#111; --muted:#6b7280; --rule:#eee; --paper:#fff;
+      --pink:#ff69b4; /* header/link accent */
     }
-    .container{width:min(var(--container),100%);margin-inline:auto;padding-inline:1rem}
-    header.site{position:sticky;top:0;background:var(--paper);border-bottom:1px solid #eee;z-index:10}
-    .bar{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
-    .brand{font-weight:800;letter-spacing:.06em}
-    .nav{display:flex;gap:1rem;align-items:center}
-    .nav a{padding:.4rem .6rem;border-radius:.6rem}
-    .nav a[aria-current="page"], .nav a:hover{background:var(--muted)}
-    .menu-btn{display:none;border:1px solid #ddd;background:#fff;border-radius:.8rem;padding:.5rem .7rem}
-    @media (max-width: 800px){
-      .menu-btn{display:inline-flex}
-      .nav{position:fixed;inset:64px 0 auto 0;background:#fff;border-bottom:1px solid #eee;display:none;flex-direction:column;gap:0}
+    .wrap{width:min(var(--container),100%);margin-inline:auto;padding-inline:clamp(14px,2.5vw,22px)}
+
+    /* Header / Nav */
+    header.site{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--rule);z-index:20}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0}
+    .brand{font-weight:800;letter-spacing:.06em;color:var(--pink)}
+    .nav{display:flex;gap:28px;align-items:center}
+    .nav a{font-size:.92rem;letter-spacing:.08em;text-transform:uppercase}
+    .nav a.active,.nav a:hover{color:var(--pink)}
+    .menu{display:none}
+    @media (max-width:800px){
+      .menu{display:inline-flex;border:1px solid var(--rule);background:#fff;border-radius:.6rem;padding:.5rem .7rem}
+      .nav{position:fixed;inset:60px 0 auto 0;display:none;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--rule)}
       .nav.open{display:flex}
-      .nav a{padding:1rem 1.25rem;border-radius:0}
+      .nav a{padding:14px 18px;width:100%}
     }
 
-    /* hero */
-    .hero{display:grid;place-items:center;min-height:65svh}
-    .hero-wrap{display:grid;gap:1rem;justify-items:center;text-align:center;padding:4rem 0}
-    .hero h1{font-size:clamp(1.6rem,4.5vw,3rem);line-height:1.1;margin:0}
-    .hero p{color:var(--ink-2);margin:0}
-    .cta{display:inline-flex;gap:.6rem;align-items:center;padding:.8rem 1rem;border-radius:.9rem;background:var(--ink);color:#fff;font-weight:600}
-    .cta:hover{opacity:.9}
+    /* Sections */
+    main section{padding:clamp(40px,6vw,70px) 0}
+    main section>header{margin-bottom:clamp(10px,1.6vw,16px)}
+    h1,h2{margin:0}
+    h2{font-size:clamp(1.35rem,3.2vw,2rem)}
+    p.muted{color:var(--muted);margin:.3rem 0 0}
 
-    /* sections */
-    section{padding:4.5rem 0}
-    section header{margin-bottom:1.2rem}
-    section h2{font-size:clamp(1.4rem,3.6vw,2.2rem);margin:0}
-    .muted{color:var(--muted-ink)}
+    /* Hero (big featured image like your chickens banner) */
+    .hero .frame{margin:10px auto 0;border-radius:6px;overflow:hidden}
+    .credit{color:var(--pink);text-align:center;margin-top:10px;font-size:.9rem}
 
-    /* gallery grid */
+    /* Grids */
     .grid{display:grid;gap:var(--gap)}
     .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width: 900px){.grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media (max-width: 620px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    @media (max-width:700px){.grid.cols-2{grid-template-columns:1fr}}
+    figure.card{margin:0;text-align:center}
+    .media{aspect-ratio: 4 / 3; background:#f3f3f3; display:grid; place-items:center}
+    figure.card img{width:100%;height:100%;object-fit:cover}
+    figcaption{margin-top:12px;font-size:.95rem}
+    .title{display:block}
+    .pill{display:inline-block;margin-top:6px;font-size:.85rem;letter-spacing:.03em;color:#555}
 
-    .card{background:#fff;border:1px solid #eee;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    .card > .media{aspect-ratio: 4 / 3; background:#eaeaea; display:grid; place-items:center}
-    .card figcaption{padding:0.9rem 1rem;display:flex;justify-content:space-between;gap:.75rem;align-items:flex-start}
-    .pill{display:inline-block;border:1px solid #eee;border-radius:999px;padding:.2rem .6rem;font-size:.8rem;color:#555}
+    /* About two-column */
+    .about{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(18px,3vw,32px);align-items:start}
+    @media (max-width:900px){.about{grid-template-columns:1fr}}
+    .about .photo{border-radius:6px;overflow:hidden}
+    .resume h3{margin:24px 0 8px;font-size:1rem;color:#e4559e}
+    .resume p{margin:0 0 12px}
+    .resume ul{margin:8px 0 18px 18px}
 
-    /* about */
-    .about{display:grid;grid-template-columns:320px 1fr;gap:2rem;align-items:start}
-    .about .photo{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-    @media (max-width: 900px){.about{grid-template-columns:1fr}}
-
-    /* contact */
-    form{display:grid;gap:.8rem}
-    .row{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
-    @media (max-width: 620px){.row{grid-template-columns:1fr}}
+    /* Contact */
+    form{display:grid;gap:12px}
+    .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+    @media (max-width:700px){.row{grid-template-columns:1fr}}
     input,textarea,button{font:inherit}
-    input,textarea{border:1px solid #ddd;border-radius:.7rem;padding:.8rem 1rem}
+    input,textarea{border:1px solid #ddd;border-radius:6px;padding:12px}
     textarea{min-height:160px}
-    button.btn{background:var(--accent);color:#fff;border:0;border-radius:.9rem;padding:.8rem 1rem;font-weight:700}
-    button.btn:hover{filter:saturate(110%)}
+    button.btn{background:#111;color:#fff;border:0;border-radius:6px;padding:12px 16px}
+    button.btn:hover{opacity:.9}
+    .center{text-align:center}
 
-    /* footer */
-    footer{padding:2.5rem 0;border-top:1px solid #eee;color:#666}
-    .social{display:flex;gap:.75rem}
-    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
-
-    /* simple lightbox */
-    dialog.preview{max-width:min(92vw,1000px);border:0;border-radius:1rem;box-shadow:var(--shadow);padding:0}
-    dialog::backdrop{background:rgba(0,0,0,.5)}
-    .preview img{width:100%;height:auto}
-    .preview .meta{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 1rem;border-top:1px solid #eee}
+    /* Footer */
+    footer{padding:36px 0;border-top:1px solid var(--rule);color:#666}
+    .social{display:flex;gap:14px;justify-content:center}
   </style>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
+
+  <!-- Header -->
   <header class="site">
-    <div class="container bar">
+    <div class="wrap bar">
       <a class="brand" href="#home">ELEANOR REYELT</a>
-      <button id="menu" class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="nav" aria-label="Primary">
-        <a href="#work" data-track>Available Work</a>
-        <a href="#paintings" data-track>Paintings</a>
-        <a href="#textiles" data-track>Textiles</a>
-        <a href="#archive" data-track>Archive</a>
-        <a href="#about" data-track>About</a>
-        <a href="#contact" data-track>Contact</a>
+      <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" class="nav" aria-label="Primary">
+        <a href="#available" class="active">Available Work</a>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- Home / Hero -->
+    <!-- HERO -->
     <section id="home" class="hero">
-      <div class="container hero-wrap">
-        <picture class="hero-media" aria-hidden="true" style="width:100%">
-          <img src="assets/img/hero-placeholder.jpg" alt="Placeholder artwork preview" style="border-radius:var(--radius);box-shadow:var(--shadow)" />
-        </picture>
-        <h1>HEN PARTY — 2025</h1>
-        <p class="muted">Bold, material‑driven works in paint and textiles.</p>
-        <p><a class="cta" href="#work">Browse available work →</a></p>
+      <div class="wrap">
+        <div class="frame">
+          <!-- Replace with your banner image -->
+          <img src="assets/img/hero-hen-party.jpg" alt='"HEN PARTY" banner'>
+        </div>
+        <p class="credit">"HEN PARTY" 2025</p>
       </div>
     </section>
 
-    <!-- Available Work overview -->
-    <section id="work">
-      <div class="container">
+    <!-- AVAILABLE WORK (single grid: paintings + textiles) -->
+    <section id="available">
+      <div class="wrap">
         <header>
           <h2>Available Work</h2>
-          <p class="muted">Paintings and textiles currently available. Replace placeholders with your pieces.</p>
+          <p class="muted">Paintings and textiles currently available.</p>
         </header>
+
         <div class="grid cols-2">
-          <a class="card" href="#paintings">
-            <figure>
-              <div class="media"><span>Paintings cover</span></div>
-              <figcaption><strong>Paintings</strong><span class="pill">View</span></figcaption>
-            </figure>
-          </a>
-          <a class="card" href="#textiles">
-            <figure>
-              <div class="media"><span>Textiles cover</span></div>
-              <figcaption><strong>Textiles</strong><span class="pill">View</span></figcaption>
-            </figure>
-          </a>
-        </div>
-      </div>
-    </section>
+          <!-- Paintings -->
+          <figure class="card">
+            <div class="media"><img src="assets/img/big-girl-wheels.jpg" alt='"BIG GIRL WHEELS"'></div>
+            <figcaption><span class="title">"BIG GIRL WHEELS"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/hen-party.jpg" alt='"HEN PARTY"'></div>
+            <figcaption><span class="title">"HEN PARTY"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/sweet-myrtle.jpg" alt='"SWEET MYRTLE"'></div>
+            <figcaption><span class="title">"SWEET MYRTLE"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/almost-natural.jpg" alt='"ALMOST NATURAL"'></div>
+            <figcaption><span class="title">"ALMOST NATURAL"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/my-blooming-self.jpg" alt='"My Blooming Self"'></div>
+            <figcaption><span class="title">"My Blooming Self"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/zonked.jpg" alt='"ZONKED"'></div>
+            <figcaption><span class="title">"ZONKED"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/big-girl-wheels-mini.jpg" alt='"BIG GIRL WHEELS (MINI)"'></div>
+            <figcaption><span class="title">"BIG GIRL WHEELS" (MINI)</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/she-glows.jpg" alt='"She Glows"'></div>
+            <figcaption><span class="title">"She Glows"</span></figcaption>
+          </figure>
 
-    <!-- Paintings -->
-    <section id="paintings">
-      <div class="container">
-        <header>
-          <h2>Paintings</h2>
-          <p class="muted">Swap images, titles, sizes, and prices to match your catalog.</p>
-        </header>
-        <div class="grid cols-3">
-          <!-- Card 1 -->
+          <!-- Textiles (also in the same grid) -->
           <figure class="card">
-            <a href="#" class="media open-preview" data-title="Big Girl Wheels" data-meta="Acrylic on canvas, 24×30 in"><img src="assets/img/painting-1.jpg" alt="Artwork: Big Girl Wheels (placeholder)"/></a>
-            <figcaption><span>Big Girl Wheels</span><span class="pill">Available</span></figcaption>
-          </figure>
-          <!-- Card 2 -->
-          <figure class="card">
-            <a href="#" class="media open-preview" data-title="Hen Party" data-meta="Acrylic on canvas, 36×48 in"><img src="assets/img/painting-2.jpg" alt="Artwork: Hen Party (placeholder)"/></a>
-            <figcaption><span>Hen Party</span><span class="pill">Available</span></figcaption>
-          </figure>
-          <!-- Card 3 -->
-          <figure class="card">
-            <a href="#" class="media open-preview" data-title="Sweet Myrtle" data-meta="Mixed media, 18×24 in"><img src="assets/img/painting-3.jpg" alt="Artwork: Sweet Myrtle (placeholder)"/></a>
-            <figcaption><span>Sweet Myrtle</span><span class="pill">Available</span></figcaption>
-          </figure>
-          <!-- Card 4 -->
-          <figure class="card">
-            <a href="#" class="media open-preview" data-title="Almost Natural" data-meta="Oil on panel, 20×20 in"><img src="assets/img/painting-4.jpg" alt="Artwork: Almost Natural (placeholder)"/></a>
-            <figcaption><span>Almost Natural</span><span class="pill">Available</span></figcaption>
-          </figure>
-          <!-- Card 5 -->
-          <figure class="card">
-            <a href="#" class="media open-preview" data-title="My Blooming Self" data-meta="Acrylic on canvas, 30×40 in"><img src="assets/img/painting-5.jpg" alt="Artwork: My Blooming Self (placeholder)"/></a>
-            <figcaption><span>My Blooming Self</span><span class="pill">Available</span></figcaption>
-          </figure>
-          <!-- Card 6 -->
-          <figure class="card">
-            <a href="#" class="media open-preview" data-title="Zonked" data-meta="Oil on canvas, 24×24 in"><img src="assets/img/painting-6.jpg" alt="Artwork: Zonked (placeholder)"/></a>
-            <figcaption><span>Zonked</span><span class="pill">Available</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- Textiles -->
-    <section id="textiles" style="background:var(--muted)">
-      <div class="container">
-        <header>
-          <h2>Textiles</h2>
-          <p class="muted">List items with edition/price notes. Prices below are placeholders.</p>
-        </header>
-        <div class="grid cols-3">
-          <figure class="card">
-            <div class="media"><img src="assets/img/textile-1.jpg" alt="Textile: Amoeba Sista (placeholder)"></div>
-            <figcaption><span>AMOEBA SISTA</span><span class="pill">$60</span></figcaption>
+            <div class="media"><img src="assets/img/amoeba-sista.jpg" alt='"AMOEBA SISTA"'></div>
+            <figcaption><span class="title">"AMOEBA SISTA"</span><span class="pill">$150.00</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/textile-2.jpg" alt="Textile: Glamquarium (placeholder)"></div>
-            <figcaption><span>GLAMQUARIUM</span><span class="pill">$300</span></figcaption>
+            <div class="media"><img src="assets/img/glamquarium.jpg" alt='"GLAMQUARIUM"'></div>
+            <figcaption><span class="title">"GLAMQUARIUM"</span><span class="pill">$500.00</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/textile-3.jpg" alt="Textile: Butterfly Garden (placeholder)"></div>
-            <figcaption><span>Butterfly Garden</span><span class="pill">$100</span></figcaption>
+            <div class="media"><img src="assets/img/butterfly-garden.jpg" alt='"Butterfly Garden"'></div>
+            <figcaption><span class="title">"Butterfly Garden"</span><span class="pill">$100.00</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/textile-4.jpg" alt="Textile: Junkanoo 3/3 (placeholder)"></div>
-            <figcaption><span>JUNKANOO 3/3</span><span class="pill">$200</span></figcaption>
+            <div class="media"><img src="assets/img/junkanoo-3.jpg" alt='"JUNKANOO" 3/3'></div>
+            <figcaption><span class="title">"JUNKANOO" 3/3</span><span class="pill">$300.00</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/textile-5.jpg" alt="Textile: Junkanoo 2/3 (placeholder)"></div>
-            <figcaption><span>JUNKANOO 2/3</span><span class="pill">$200</span></figcaption>
+            <div class="media"><img src="assets/img/junkanoo-2.jpg" alt='"JUNKANOO" 2/3'></div>
+            <figcaption><span class="title">"JUNKANOO" 2/3</span><span class="pill">$300.00</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/textile-6.jpg" alt="Textile: Junkanoo 1/3 (placeholder)"></div>
-            <figcaption><span>JUNKANOO 1/3</span><span class="pill">$200</span></figcaption>
+            <div class="media"><img src="assets/img/junkanoo-1.jpg" alt='"JUNKANOO" 1/3'></div>
+            <figcaption><span class="title">"JUNKANOO" 1/3</span><span class="pill">$300.00</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/the-orange-line.jpg" alt='"The Orange Line"'></div>
+            <figcaption><span class="title">"The Orange Line"</span><span class="pill">$500.00</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/warmfuzzyfeeling.jpg" alt='"WARMFUZZYFEELING"'></div>
+            <figcaption><span class="title">"WARMFUZZYFEELING"</span><span class="pill">$40.00</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- Archive -->
+    <!-- ARCHIVE -->
     <section id="archive">
-      <div class="container">
+      <div class="wrap">
         <header>
           <h2>Archive</h2>
-          <p class="muted">Past works. Mark pieces as SOLD or with context notes.</p>
+          <p class="muted">Selected past works.</p>
         </header>
-        <div class="grid cols-3">
+        <div class="grid cols-2">
           <figure class="card">
-            <div class="media"><img src="assets/img/archive-1.jpg" alt="Archive artwork placeholder"></div>
-            <figcaption><span>STARBURST</span><span class="pill">SOLD</span></figcaption>
+            <div class="media"><img src="assets/img/starburst.jpg" alt='"STARBURST"'></div>
+            <figcaption><span class="title">"STARBURST"</span><span class="pill">SOLD</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/archive-2.jpg" alt="Archive artwork placeholder"></div>
-            <figcaption><span>In the Tank</span><span class="pill">SOLD</span></figcaption>
+            <div class="media"><img src="assets/img/crochet-exploration.jpg" alt='Crochet Exploration'></div>
+            <figcaption><span class="title">Crochet Exploration</span><span class="pill">SAMPLE WORK</span></figcaption>
           </figure>
           <figure class="card">
-            <div class="media"><img src="assets/img/archive-3.jpg" alt="Archive artwork placeholder"></div>
-            <figcaption><span>Wine Down</span><span class="pill">SOLD</span></figcaption>
+            <div class="media"><img src="assets/img/in-the-tank.jpg" alt='"In the Tank"'></div>
+            <figcaption><span class="title">"In the Tank"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/love-grows.jpg" alt='"Love Grows"'></div>
+            <figcaption><span class="title">"Love Grows"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/wine-down.jpg" alt='"Wine Down"'></div>
+            <figcaption><span class="title">"Wine Down"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/growth-is-a-mindset.jpg" alt='"Growth is a Mindset"'></div>
+            <figcaption><span class="title">"Growth is a Mindset"</span><span class="pill">SOLD</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/bony.jpg" alt='"Bony"'></div>
+            <figcaption><span class="title">"Bony"</span></figcaption>
+          </figure>
+          <figure class="card">
+            <div class="media"><img src="assets/img/raw.jpg" alt='"Raw"'></div>
+            <figcaption><span class="title">"Raw"</span></figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about" style="background:var(--muted)">
-      <div class="container">
-        <header>
-          <h2>About</h2>
-          <p class="muted">Replace with your bio; do not copy text from third‑party sites without permission.</p>
-        </header>
+    <!-- ABOUT -->
+    <section id="about" style="background:#fafafa">
+      <div class="wrap">
+        <header><h2>About</h2></header>
         <div class="about">
-          <div class="photo"><img src="assets/img/headshot.jpg" alt="Artist headshot placeholder"></div>
+          <div class="photo">
+            <img src="assets/img/headshot.jpg" alt="Eleanor Reyelt headshot">
+          </div>
           <div>
-            <p><strong>Eleanor Reyelt</strong> is a Boston‑based visual artist working in painting and fibers. Her practice explores saturated color, layered textures, and playful materials. (Placeholder blurb.)</p>
-            <p class="muted">Education, exhibitions, awards, and skills can be listed here in simple paragraphs or lists.</p>
-            <ul>
-              <li><strong>Education:</strong> BFA candidate (placeholder)</li>
-              <li><strong>Exhibitions:</strong> 2025—Group/solo shows (placeholder)</li>
-              <li><strong>Skills:</strong> Studio art, fiber arts, digital art (placeholder)</li>
-            </ul>
+            <p>Eleanor Reyelt (b. Boston, 2004) is a visual artist based in Boston, Massachusetts. She works primarily in painting and textiles to create bold, material-driven works that celebrate the loud, electric energy of girlhood. Drawing from early aesthetics like glitter, plastic, and pink, her practice reimagines these elements with confidence and intensity. Through saturated surfaces, layered textures, and playful materials, she explores excess, visibility, and the power of being too much. Eleanor is currently pursuing her BFA in Painting with a minor in Fibers at the Savannah College of Art and Design.</p>
+            <div class="resume">
+              <h3>Education</h3>
+              <p>Savannah College of Art and Design | 2023–2027<br>BFA in Painting, Fibers Minor</p>
+              <p>Brimmer and May School | 2015–2023<br>High School Diploma & Creative Arts Diploma</p>
+
+              <h3>Exhibitions • Awards</h3>
+              <ul>
+                <li>2025 | <em>Art Off the Wall</em>, Brookline Arts Center — <em>GLAMQUARIUM</em> & <em>The Orange Line</em></li>
+                <li>2025 | <em>Orange Line</em>, Piano Craft Gallery, Boston, MA — <em>The Orange Line</em></li>
+                <li>2025 | Fibers Open Studio, Savannah, GA — <em>JUNKANOO</em> series</li>
+                <li>2020 | Scholastic Art & Writing Awards — Silver Key (<em>Camouflage</em>)</li>
+              </ul>
+
+              <h3>Professional Experience</h3>
+              <ul>
+                <li>Studio Echelman — Studio Assistant (2024–present)</li>
+                <li>Freelance Visual Artist — Commissions & sales</li>
+              </ul>
+
+              <h3>Skills</h3>
+              <p>Studio Art | Fiber Arts | Digital Art | Painting | Social Media | Web</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact">
-      <div class="container">
-        <header>
-          <h2>Contact</h2>
-          <p class="muted">Use the form below or email directly. The form posts to a placeholder endpoint.</p>
-        </header>
-        <div class="grid cols-2">
+      <div class="wrap">
+        <header><h2>Contact</h2></header>
+        <p class="center muted">You can also reach out by using this form:</p>
+        <div class="grid cols-2" style="align-items:start">
           <form action="https://formspree.io/f/your-id" method="POST">
             <div class="row">
-              <label>
-                <span class="sr-only">First Name</span>
-                <input name="first_name" placeholder="First Name" required>
-              </label>
-              <label>
-                <span class="sr-only">Last Name</span>
-                <input name="last_name" placeholder="Last Name" required>
-              </label>
+              <input name="first_name" placeholder="First Name *" required>
+              <input name="last_name" placeholder="Last Name *" required>
             </div>
-            <label>
-              <span class="sr-only">Email</span>
-              <input name="email" type="email" placeholder="Email" required>
-            </label>
-            <label>
-              <span class="sr-only">Subject</span>
-              <input name="subject" placeholder="Subject" required>
-            </label>
-            <label>
-              <span class="sr-only">Message</span>
-              <textarea name="message" placeholder="Leave a message..." required></textarea>
-            </label>
+            <input name="email" type="email" placeholder="Email *" required>
+            <input name="subject" placeholder="Subject *" required>
+            <textarea name="message" placeholder="Leave a message... *" required></textarea>
             <button class="btn" type="submit">Submit</button>
           </form>
 
           <form action="https://formspree.io/f/your-id-newsletter" method="POST">
-            <h3>Join the mailing list</h3>
-            <label>
-              <span class="sr-only">Your email</span>
-              <input name="email" type="email" placeholder="Enter your email" required>
-            </label>
+            <h3 style="color:var(--pink);margin:0 0 8px">Join the mailing list</h3>
+            <input name="email" type="email" placeholder="Enter your email *" required>
             <label style="display:flex;align-items:center;gap:.5rem">
-              <input type="checkbox" required>
-              <span>Yes, subscribe me to your newsletter.</span>
+              <input type="checkbox" required> <span>Yes, subscribe me to your newsletter.</span>
             </label>
             <button class="btn" type="submit">Subscribe</button>
           </form>
@@ -323,67 +305,24 @@
   </main>
 
   <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap">
-      <small>© <span id="y"></span> Eleanor Reyelt. All rights reserved.</small>
+    <div class="wrap">
       <div class="social" aria-label="Social links">
-        <a href="https://instagram.com/" aria-label="Instagram" target="_blank" rel="noreferrer noopener">🔗 Instagram</a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank" rel="noreferrer noopener">🔗 LinkedIn</a>
-        <a href="https://youtube.com/" aria-label="YouTube" target="_blank" rel="noreferrer noopener">🔗 YouTube</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
       </div>
     </div>
   </footer>
 
-  <!-- lightbox dialog -->
-  <dialog class="preview" id="preview">
-    <img alt="Artwork preview" src="" />
-    <div class="meta">
-      <strong id="pv-title"></strong>
-      <span id="pv-meta" class="muted"></span>
-      <button id="pv-close" class="btn" style="margin-left:auto;background:#111">Close</button>
-    </div>
-  </dialog>
-
   <script>
-    // why: progressive enhancement for mobile nav & preview
-    const btn = document.getElementById('menu');
-    const nav = document.getElementById('site-nav');
-    btn?.addEventListener('click', () => {
+    // mobile nav
+    const menuBtn = document.getElementById('menu');
+    const nav = document.getElementById('nav');
+    menuBtn?.addEventListener('click', ()=>{
       const open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-expanded', String(open));
     });
-    document.querySelectorAll('.nav a').forEach(a => a.addEventListener('click',()=>nav.classList.remove('open')));
-
-    // set current year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // image preview (uses <dialog>)
-    const dlg = document.getElementById('preview');
-    const pvTitle = document.getElementById('pv-title');
-    const pvMeta = document.getElementById('pv-meta');
-    const pvImg  = dlg.querySelector('img');
-    document.querySelectorAll('.open-preview').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const img = link.querySelector('img');
-        pvImg.src = img.src; pvImg.alt = img.alt;
-        pvTitle.textContent = link.dataset.title || '';
-        pvMeta.textContent  = link.dataset.meta || '';
-        dlg.showModal();
-      });
-    });
-    document.getElementById('pv-close').addEventListener('click',()=>dlg.close());
-    dlg.addEventListener('click', e => { if(e.target === dlg) dlg.close(); });
+    document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
   </script>
-
-  <!--
-  README (quick):
-  1) Put this file at the repo root as index.html.
-  2) Add your images under /assets/img/ (create the folders). Update <img> src paths accordingly.
-  3) Replace placeholder text, prices, and links. If you own the original site/text, you can paste it here.
-  4) Forms: replace the Formspree endpoints with your IDs, or switch to Netlify Forms if deploying on Netlify.
-  5) GitHub Pages: Settings → Pages → deploy from main branch (root). Your site will be live at https://<user>.github.io/<repo>/
-  6) Favicon: place /assets/img/favicon.ico and add a <link rel="icon"> in <head>.
-  7) Custom domain: add a CNAME file with your domain to the repo root.
-  -->
 </body>
 </html>
