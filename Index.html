@@ -3,100 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ELEANOR REYELT</title>
-  <meta name="description" content="Eleanor Reyelt — paintings and textiles." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Available Work — ELEANOR REYELT</title>
+  <meta name="description" content="Available paintings and textiles by Eleanor Reyelt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    /* Base */
-    *,*::before,*::after{box-sizing:border-box}
-    html:focus-within{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#111;background:#fff}
-    img{max-width:100%;display:block;height:auto}
-    a{color:inherit;text-decoration:none}
-    :root{
-      --container:clamp(18rem,92vw,1100px);
-      --gap:clamp(16px,2.2vw,28px);
-      --ink:#111; --muted:#6b7280; --rule:#eee; --paper:#fff;
-      --pink:#ff69b4; /* header/link accent */
-    }
-    .wrap{width:min(var(--container),100%);margin-inline:auto;padding-inline:clamp(14px,2.5vw,22px)}
-
-    /* Header / Nav */
-    header.site{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--rule);z-index:20}
-    .bar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0}
-    .brand{font-weight:800;letter-spacing:.06em;color:var(--pink)}
-    .nav{display:flex;gap:28px;align-items:center}
-    .nav a{font-size:.92rem;letter-spacing:.08em;text-transform:uppercase}
-    .nav a.active,.nav a:hover{color:var(--pink)}
-    .menu{display:none}
-    @media (max-width:800px){
-      .menu{display:inline-flex;border:1px solid var(--rule);background:#fff;border-radius:.6rem;padding:.5rem .7rem}
-      .nav{position:fixed;inset:60px 0 auto 0;display:none;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--rule)}
-      .nav.open{display:flex}
-      .nav a{padding:14px 18px;width:100%}
-    }
-
-    /* Sections */
-    main section{padding:clamp(40px,6vw,70px) 0}
-    main section>header{margin-bottom:clamp(10px,1.6vw,16px)}
-    h1,h2{margin:0}
-    h2{font-size:clamp(1.35rem,3.2vw,2rem)}
-    p.muted{color:var(--muted);margin:.3rem 0 0}
-
-    /* Hero (big featured image like your chickens banner) */
-    .hero .frame{margin:10px auto 0;border-radius:6px;overflow:hidden}
-    .credit{color:var(--pink);text-align:center;margin-top:10px;font-size:.9rem}
-
-    /* Grids */
-    .grid{display:grid;gap:var(--gap)}
-    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media (max-width:700px){.grid.cols-2{grid-template-columns:1fr}}
-    figure.card{margin:0;text-align:center}
-    .media{aspect-ratio: 4 / 3; background:#f3f3f3; display:grid; place-items:center}
-    figure.card img{width:100%;height:100%;object-fit:cover}
-    figcaption{margin-top:12px;font-size:.95rem}
-    .title{display:block}
-    .pill{display:inline-block;margin-top:6px;font-size:.85rem;letter-spacing:.03em;color:#555}
-
-    /* About two-column */
-    .about{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(18px,3vw,32px);align-items:start}
-    @media (max-width:900px){.about{grid-template-columns:1fr}}
-    .about .photo{border-radius:6px;overflow:hidden}
-    .resume h3{margin:24px 0 8px;font-size:1rem;color:#e4559e}
-    .resume p{margin:0 0 12px}
-    .resume ul{margin:8px 0 18px 18px}
-
-    /* Contact */
-    form{display:grid;gap:12px}
-    .row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
-    @media (max-width:700px){.row{grid-template-columns:1fr}}
-    input,textarea,button{font:inherit}
-    input,textarea{border:1px solid #ddd;border-radius:6px;padding:12px}
-    textarea{min-height:160px}
-    button.btn{background:#111;color:#fff;border:0;border-radius:6px;padding:12px 16px}
-    button.btn:hover{opacity:.9}
-    .center{text-align:center}
-
-    /* Footer */
-    footer{padding:36px 0;border-top:1px solid var(--rule);color:#666}
-    .social{display:flex;gap:14px;justify-content:center}
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <a class="sr-only" href="#main">Skip to content</a>
-
-  <!-- Header -->
+  <!-- header -->
+  <!-- (paste the shared header here) -->
   <header class="site">
     <div class="wrap bar">
-      <a class="brand" href="#home">ELEANOR REYELT</a>
+      <a class="brand" href="index.html">ELEANOR REYELT</a>
       <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav id="nav" class="nav" aria-label="Primary">
-        <a href="#available" class="active">Available Work</a>
-        <a href="#archive">Archive</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html">Available Work</a>
+        <a href="archive.html">Archive</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -106,23 +30,22 @@
     <section id="home" class="hero">
       <div class="wrap">
         <div class="frame">
-          <!-- Replace with your banner image -->
           <img src="assets/img/hero-hen-party.jpg" alt='"HEN PARTY" banner'>
         </div>
         <p class="credit">"HEN PARTY" 2025</p>
       </div>
     </section>
 
-    <!-- AVAILABLE WORK (single grid: paintings + textiles) -->
+    <!-- AVAILABLE GRID -->
     <section id="available">
       <div class="wrap">
         <header>
-          <h2>Available Work</h2>
+          <h1>Available Work</h1>
           <p class="muted">Paintings and textiles currently available.</p>
         </header>
 
         <div class="grid cols-2">
-          <!-- Paintings -->
+          <!-- Paintings (examples) -->
           <figure class="card">
             <div class="media"><img src="assets/img/big-girl-wheels.jpg" alt='"BIG GIRL WHEELS"'></div>
             <figcaption><span class="title">"BIG GIRL WHEELS"</span></figcaption>
@@ -147,16 +70,8 @@
             <div class="media"><img src="assets/img/zonked.jpg" alt='"ZONKED"'></div>
             <figcaption><span class="title">"ZONKED"</span></figcaption>
           </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/big-girl-wheels-mini.jpg" alt='"BIG GIRL WHEELS (MINI)"'></div>
-            <figcaption><span class="title">"BIG GIRL WHEELS" (MINI)</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/she-glows.jpg" alt='"She Glows"'></div>
-            <figcaption><span class="title">"She Glows"</span></figcaption>
-          </figure>
 
-          <!-- Textiles (also in the same grid) -->
+          <!-- Textiles (examples) -->
           <figure class="card">
             <div class="media"><img src="assets/img/amoeba-sista.jpg" alt='"AMOEBA SISTA"'></div>
             <figcaption><span class="title">"AMOEBA SISTA"</span><span class="pill">$150.00</span></figcaption>
@@ -181,129 +96,12 @@
             <div class="media"><img src="assets/img/junkanoo-1.jpg" alt='"JUNKANOO" 1/3'></div>
             <figcaption><span class="title">"JUNKANOO" 1/3</span><span class="pill">$300.00</span></figcaption>
           </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/the-orange-line.jpg" alt='"The Orange Line"'></div>
-            <figcaption><span class="title">"The Orange Line"</span><span class="pill">$500.00</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/warmfuzzyfeeling.jpg" alt='"WARMFUZZYFEELING"'></div>
-            <figcaption><span class="title">"WARMFUZZYFEELING"</span><span class="pill">$40.00</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ARCHIVE -->
-    <section id="archive">
-      <div class="wrap">
-        <header>
-          <h2>Archive</h2>
-          <p class="muted">Selected past works.</p>
-        </header>
-        <div class="grid cols-2">
-          <figure class="card">
-            <div class="media"><img src="assets/img/starburst.jpg" alt='"STARBURST"'></div>
-            <figcaption><span class="title">"STARBURST"</span><span class="pill">SOLD</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/crochet-exploration.jpg" alt='Crochet Exploration'></div>
-            <figcaption><span class="title">Crochet Exploration</span><span class="pill">SAMPLE WORK</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/in-the-tank.jpg" alt='"In the Tank"'></div>
-            <figcaption><span class="title">"In the Tank"</span><span class="pill">SOLD</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/love-grows.jpg" alt='"Love Grows"'></div>
-            <figcaption><span class="title">"Love Grows"</span><span class="pill">SOLD</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/wine-down.jpg" alt='"Wine Down"'></div>
-            <figcaption><span class="title">"Wine Down"</span><span class="pill">SOLD</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/growth-is-a-mindset.jpg" alt='"Growth is a Mindset"'></div>
-            <figcaption><span class="title">"Growth is a Mindset"</span><span class="pill">SOLD</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/bony.jpg" alt='"Bony"'></div>
-            <figcaption><span class="title">"Bony"</span></figcaption>
-          </figure>
-          <figure class="card">
-            <div class="media"><img src="assets/img/raw.jpg" alt='"Raw"'></div>
-            <figcaption><span class="title">"Raw"</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" style="background:#fafafa">
-      <div class="wrap">
-        <header><h2>About</h2></header>
-        <div class="about">
-          <div class="photo">
-            <img src="assets/img/headshot.jpg" alt="Eleanor Reyelt headshot">
-          </div>
-          <div>
-            <p>Eleanor Reyelt (b. Boston, 2004) is a visual artist based in Boston, Massachusetts. She works primarily in painting and textiles to create bold, material-driven works that celebrate the loud, electric energy of girlhood. Drawing from early aesthetics like glitter, plastic, and pink, her practice reimagines these elements with confidence and intensity. Through saturated surfaces, layered textures, and playful materials, she explores excess, visibility, and the power of being too much. Eleanor is currently pursuing her BFA in Painting with a minor in Fibers at the Savannah College of Art and Design.</p>
-            <div class="resume">
-              <h3>Education</h3>
-              <p>Savannah College of Art and Design | 2023–2027<br>BFA in Painting, Fibers Minor</p>
-              <p>Brimmer and May School | 2015–2023<br>High School Diploma & Creative Arts Diploma</p>
-
-              <h3>Exhibitions • Awards</h3>
-              <ul>
-                <li>2025 | <em>Art Off the Wall</em>, Brookline Arts Center — <em>GLAMQUARIUM</em> & <em>The Orange Line</em></li>
-                <li>2025 | <em>Orange Line</em>, Piano Craft Gallery, Boston, MA — <em>The Orange Line</em></li>
-                <li>2025 | Fibers Open Studio, Savannah, GA — <em>JUNKANOO</em> series</li>
-                <li>2020 | Scholastic Art & Writing Awards — Silver Key (<em>Camouflage</em>)</li>
-              </ul>
-
-              <h3>Professional Experience</h3>
-              <ul>
-                <li>Studio Echelman — Studio Assistant (2024–present)</li>
-                <li>Freelance Visual Artist — Commissions & sales</li>
-              </ul>
-
-              <h3>Skills</h3>
-              <p>Studio Art | Fiber Arts | Digital Art | Painting | Social Media | Web</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="wrap">
-        <header><h2>Contact</h2></header>
-        <p class="center muted">You can also reach out by using this form:</p>
-        <div class="grid cols-2" style="align-items:start">
-          <form action="https://formspree.io/f/your-id" method="POST">
-            <div class="row">
-              <input name="first_name" placeholder="First Name *" required>
-              <input name="last_name" placeholder="Last Name *" required>
-            </div>
-            <input name="email" type="email" placeholder="Email *" required>
-            <input name="subject" placeholder="Subject *" required>
-            <textarea name="message" placeholder="Leave a message... *" required></textarea>
-            <button class="btn" type="submit">Submit</button>
-          </form>
-
-          <form action="https://formspree.io/f/your-id-newsletter" method="POST">
-            <h3 style="color:var(--pink);margin:0 0 8px">Join the mailing list</h3>
-            <input name="email" type="email" placeholder="Enter your email *" required>
-            <label style="display:flex;align-items:center;gap:.5rem">
-              <input type="checkbox" required> <span>Yes, subscribe me to your newsletter.</span>
-            </label>
-            <button class="btn" type="submit">Subscribe</button>
-          </form>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- footer + scripts -->
   <footer>
     <div class="wrap">
       <div class="social" aria-label="Social links">
@@ -313,9 +111,7 @@
       </div>
     </div>
   </footer>
-
   <script>
-    // mobile nav
     const menuBtn = document.getElementById('menu');
     const nav = document.getElementById('nav');
     menuBtn?.addEventListener('click', ()=>{
@@ -323,6 +119,11 @@
       menuBtn.setAttribute('aria-expanded', String(open));
     });
     document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+    const path = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('#nav a').forEach(a=>{
+      const href = a.getAttribute('href');
+      if ((path === '' && href === 'index.html') || path === href) a.classList.add('active');
+    });
   </script>
 </body>
 </html>
