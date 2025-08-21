@@ -1,2 +1,0 @@
-Place your images here and match the filenames referenced in the HTML.
-/Users/eleanorreyelt/Pictures/Photos Library.photoslibrary/resources/derivatives/C/CB9B641F-826D-4E3E-91FC-B3E627E9DC46_1_105_c.jpeg/Users/eleanorreyelt/Pictures/Photos Library.photoslibrary/resources/derivatives/C/CB9B641F-826D-4E3E-91FC-B3E627E9DC46_1_105_c.jpeg
